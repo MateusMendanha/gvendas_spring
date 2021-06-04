@@ -1,6 +1,4 @@
-package com.gvendas.gestaovendas.entidade;
-
-import org.hibernate.annotations.ManyToAny;
+package com.gvendas.gestaovendas.entidades;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
