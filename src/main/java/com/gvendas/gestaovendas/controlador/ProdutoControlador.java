@@ -1,4 +1,4 @@
-package com.gvendas.gestaovendas.controlador.util;
+package com.gvendas.gestaovendas.controlador;
 
 import com.gvendas.gestaovendas.entidades.Produto;
 import com.gvendas.gestaovendas.servico.ProdutoServico;
@@ -40,5 +40,11 @@ public class ProdutoControlador {
     public ResponseEntity<Produto> salvar(@Valid @RequestBody Produto produto){
         Produto produtoSalvo = produtoServico.salvar(produto);
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoSalvo);
+    }
+
+    @ApiOperation(value = "Atualizar", nickname = "atualizarProduto")
+    @PutMapping("/{codigoProduto}")
+    public ResponseEntity<Produto> atualizar(@PathVariable Long codigoCategoria,@PathVariable Long codigoProduto, @Valid @RequestBody Produto produto){
+        return ResponseEntity.ok(produtoServico.atualizar(codigoCategoria, codigoProduto, produto));
     }
 }
