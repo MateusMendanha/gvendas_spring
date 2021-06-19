@@ -1,10 +1,7 @@
 package com.gvendas.gestaovendas.entidades;
 
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -18,30 +15,46 @@ public class Produto {
     private Long codigo;
 
     @Column(name = "descricao")
-    @NotBlank(message = "Descrição")
-    @Length(min = 3, max = 100, message = "Descrição")
     private String descricao;
 
     @Column(name = "quantidade")
-    @NotNull(message = "Quantidade")
     private Integer quantidade;
 
-    @NotNull(message = "Preço Custo")
     @Column(name = "preco_curto")
     private BigDecimal precoCusto;
 
-    @NotNull(message = "Preço Venda")
     @Column(name = "preco_venda")
     private BigDecimal precoVenda;
 
-    @Length(max = 100, message = "Observação")
     @Column(name = "observacao")
     private String observacao;
 
-    @NotNull(message = "Código categoria")
     @ManyToOne
     @JoinColumn(name = "codigo_categoria", referencedColumnName = "codigo")
     private Categoria categoria;
+
+    public Produto(){}
+
+    public Produto(Long codigo, String descricao, Integer quantidade, BigDecimal precoCusto, BigDecimal precoVenda,
+                   String observacao, Categoria categoria) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.quantidade = quantidade;
+        this.precoCusto = precoCusto;
+        this.precoVenda = precoVenda;
+        this.observacao = observacao;
+        this.categoria = categoria;
+    }
+
+    public Produto(String descricao, Integer quantidade, BigDecimal precoCusto, BigDecimal precoVenda,
+                   String observacao, Categoria categoria) {
+        this.descricao = descricao;
+        this.quantidade = quantidade;
+        this.precoCusto = precoCusto;
+        this.precoVenda = precoVenda;
+        this.observacao = observacao;
+        this.categoria = categoria;
+    }
 
     public Long getCodigo() {
         return codigo;
@@ -111,4 +124,5 @@ public class Produto {
     public int hashCode() {
         return Objects.hash(codigo, descricao, quantidade, precoCusto, precoVenda, observacao, categoria);
     }
+
 }

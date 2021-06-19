@@ -10,8 +10,6 @@ import java.util.Objects;
 @Table(name = "categoria")
 public class Categoria {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
@@ -22,9 +20,11 @@ public class Categoria {
 
     public Categoria(){}
 
-    public Categoria(String nome) {
-        this.nome = nome;
+    public Categoria(Long codigo) {
+        this.codigo = codigo;
     }
+
+    public Categoria(String nome) {this.nome = nome;}
 
     public Categoria(Long codigo, String nome) {
         this.codigo = codigo;
