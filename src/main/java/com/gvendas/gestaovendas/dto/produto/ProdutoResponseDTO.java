@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 
-@ApiModel("Produto retorno DTo")
+@ApiModel("Produto retorno DTO")
 public class ProdutoResponseDTO {
 
     public void setObservacao(String observacao) {
